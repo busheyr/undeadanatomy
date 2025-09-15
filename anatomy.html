@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anatomy of the Undead: A Physiological Study</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #111827;
+            color: #d1d5db;
+        }
+        .tab-btn {
+            transition: all 0.3s ease;
+        }
+        .tab-btn.active {
+            background-color: #dc2626;
+            color: #ffffff;
+            border-bottom: 2px solid #f87171;
+        }
+        .tab-btn:not(.active):hover {
+            background-color: #374151;
+        }
+        .content-section {
+            display: none;
+        }
+        .content-section.active {
+            display: block;
+        }
+        .accordion-header {
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .accordion-header:hover {
+            background-color: #374151;
+        }
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-out, padding 0.5s ease-out;
+        }
+        .accordion-content.open {
+             max-height: 1000px; /* Adjust as needed */
+             padding-top: 1rem;
+             padding-bottom: 1rem;
+        }
+        .icon {
+            width: 1.5rem;
+            height: 1.5rem;
+            margin-right: 0.75rem;
+        }
+        /* Simple fade-in animation for active content */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .content-section.active {
+            animation: fadeIn 0.5s ease-in-out forwards;
+        }
+        .card-image {
+            aspect-ratio: 16 / 9;
+            object-fit: cover;
+            border-radius: 0.375rem; /* rounded-md */
+            margin-bottom: 1rem;
+        }
+        .accordion-body {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+            align-items: start;
+        }
+        @media (min-width: 768px) {
+            .accordion-body {
+                grid-template-columns: 200px 1fr; /* Image on left, text on right */
+            }
+        }
+        .accordion-image {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+            border-radius: 0.5rem; /* rounded-lg */
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <div class="container mx-auto p-4 md:p-8 max-w-7xl">
+        <!-- Header -->
+        <header class="text-center mb-8 md:mb-12">
+            <h1 class="text-4xl md:text-5xl font-bold text-white mb-2">Anatomy of the Undead</h1>
+            <p class="text-lg md:text-xl text-red-400">A Physiological Study of Fictional Zombie Pathologies</p>
+            <p class="mt-4 max-w-3xl mx-auto text-gray-400">From the slow, shambling corpses of classic horror to the hyper-aggressive infected of modern fiction, the "zombie" is not a monolith. This document explores the diverse biological and physiological underpinnings of different undead archetypes, analyzing how their traits are defined by their origins.</p>
+            <div class="mt-6 p-4 max-w-3xl mx-auto border-l-4 border-yellow-500 bg-yellow-900/20 rounded-r-lg">
+                <p class="text-yellow-300"><strong class="font-semibold text-yellow-400">Warning:</strong> The images in this presentation may be disturbing to some viewers.</p>
+            </div>
+        </header>
+
+        <!-- Navigation Tabs -->
+        <nav class="flex flex-wrap justify-center gap-2 md:gap-4 mb-8 border-b border-gray-700 pb-4">
+            <button class="tab-btn active px-4 py-2 font-semibold rounded-lg" data-tab="archetypes">Zombie Archetypes</button>
+            <button class="tab-btn px-4 py-2 font-semibold rounded-lg" data-tab="lastofus">Case Study: The Last of Us</button>
+            <button class="tab-btn px-4 py-2 font-semibold rounded-lg" data-tab="dyinglight">Case Study: Dying Light</button>
+        </nav>
+
+        <!-- Main Content Area -->
+        <main>
+            <!-- Section 1: Zombie Archetypes -->
+            <section id="archetypes" class="content-section active">
+                <div class="space-y-8">
+                    <!-- Classic Zombies -->
+                    <div>
+                        <h2 class="text-2xl font-bold text-red-500 mb-4 border-l-4 border-red-500 pl-4">Classic Zombies: The Reanimated Dead</h2>
+                        <p class="mb-6 text-gray-300">This category represents the foundational zombie: a deceased human body brought back to a state of animation without true life. Their actions are driven by residual brain stem function, lacking cognition, emotion, or self-preservation.</p>
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div class="bg-gray-800 p-6 rounded-lg border border-gray-700 flex flex-col">
+                                <img src="https://i0.wp.com/www.horrorhomeroom.com/wp-content/uploads/2015/10/reaching.jpg?resize=1000%2C668">
+                                <h3 class="font-semibold text-xl text-white mb-2">The Walking Dead-style</h3>
+                                <p class="mb-4 flex-grow">Dead body reanimated. Only the brain stem is active → no higher cognition, just instinct (feeding, movement).</p>
+                                <div class="bg-gray-900 p-3 rounded-md mt-auto">
+                                    <p class="font-semibold text-red-400">Physiology Angle:</p>
+                                    <p class="text-gray-300">limited motor control, no metabolism, decaying tissue.</p>
+                                </div>
+                            </div>
+                            <div class="bg-gray-800 p-6 rounded-lg border border-gray-700 flex flex-col">
+                                <img src="https://s.wsj.net/public/resources/images/P1-AX386_Zombie_G_20100926162416.jpg">
+                                <h3 class="font-semibold text-xl text-white mb-2">George A. Romero / Night of the Living Dead</h3>
+                                <p class="mb-4 flex-grow">Reanimation is vague (radiation, cosmic event, unknown virus). Corpses are mobile but slow, mindless.</p>
+                                <div class="bg-gray-900 p-3 rounded-md mt-auto">
+                                    <p class="font-semibold text-red-400">Physiology Angle:</p>
+                                    <p class="text-gray-300">emphasizes decomposition and persistence of motor activity despite decay.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Infection-Based -->
+                    <div>
+                        <h2 class="text-2xl font-bold text-red-500 mb-4 border-l-4 border-red-500 pl-4">Infection-Based: The Living Hosts</h2>
+                        <p class="mb-6 text-gray-300">A more modern interpretation where the host is not truly dead, but alive and controlled by a pathogen—be it a virus, fungus, or other parasite. This often results in faster, more aggressive, and biologically dynamic infected beings.</p>
+                        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                            <div class="bg-gray-800 p-6 rounded-lg border border-gray-700 flex flex-col">
+                                <img src="https://static.wikia.nocookie.net/28dayslater/images/8/8d/WeeksHordeofInfected.jpg/revision/latest?cb=20111020192720">
+                                <h3 class="font-semibold text-xl text-white mb-2">28 Days Later (“rage virus”)</h3>
+                                <p class="mb-4 flex-grow">Not dead — just overtaken by a virus that hijacks neural chemistry → extreme aggression, hyperkinetic, alive but terminal.</p>
+                                <div class="bg-gray-900 p-3 rounded-md mt-auto">
+                                    <p class="font-semibold text-red-400">Physiology Angle:</p>
+                                    <p class="text-gray-300">adrenal system overload, sympathetic nervous system dominance, viral replication.</p>
+                                </div>
+                            </div>
+                            <div class="bg-gray-800 p-6 rounded-lg border border-gray-700 flex flex-col">
+                                 <img src="https://d2thvodm3xyo6j.cloudfront.net/media/2020/03/50e03a4cdc04a42b-600x338.jpg">
+                                <h3 class="font-semibold text-xl text-white mb-2">I Am Legend (Will Smith)</h3>
+                                <p class="mb-4 flex-grow">Cancer cure mutates into a virus. Victims alive but transformed: hyper-aggressive, photosensitive, with reduced higher cognition but still some hints of social order.</p>
+                                <div class="bg-gray-900 p-3 rounded-md mt-auto">
+                                    <p class="font-semibold text-red-400">Physiology Angle:</p>
+                                    <p class="text-gray-300">altered metabolism, heightened strength, extreme viral mutation.</p>
+                                </div>
+                            </div>
+                            <div class="bg-gray-800 p-6 rounded-lg border border-gray-700 flex flex-col">
+                                <img src="https://d3dkwn7op408kc.cloudfront.net/ckeditor_assets/2023/07/14/lastlucy2box.jpg">
+                                <h3 class="font-semibold text-xl text-white mb-2">The Last of Us (Cordyceps)</h3>
+                                <p class="mb-4 flex-grow">Fungus invades and controls host. Early stages → host alive, partially aware; late stages → massive fungal growth distorts anatomy (clickers, bloaters).</p>
+                                <div class="bg-gray-900 p-3 rounded-md mt-auto">
+                                    <p class="font-semibold text-red-400">Physiology Angle:</p>
+                                    <p class="text-gray-300">parasitic growth through nervous system, sensory replacement (echolocation), altered morphology.</p>
+                                </div>
+                            </div>
+                             <div class="bg-gray-800 p-6 rounded-lg border border-gray-700 flex flex-col">
+                                <img src="https://static0.thegamerimages.com/wordpress/wp-content/uploads/2022/02/Dying-Light-2-Mod-Makes-Zombie-Hordes-Bigger-With-Up-To-Four-Size-Options.jpg" alt="Dying Light infected" class="card-image" onerror="this.onerror=null;this.src='https://placehold.co/600x400/1f2937/ef4444?text=Image+Not+Found';">
+                                <h3 class="font-semibold text-xl text-white mb-2">Dying Light</h3>
+                                <p class="mb-4 flex-grow">Viral outbreak keeps hosts alive but altered. Early infected: fast, aggressive; later mutations → specialized “volatiles” that burn in sunlight.</p>
+                                <div class="bg-gray-900 p-3 rounded-md mt-auto">
+                                    <p class="font-semibold text-red-400">Physiology Angle:</p>
+                                    <p class="text-gray-300">stages of viral mutation, day/night activity differences, extreme tissue regeneration in advanced forms.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                     <!-- Supernatural / Hybrid -->
+                    <div>
+                        <h2 class="text-2xl font-bold text-red-500 mb-4 border-l-4 border-red-500 pl-4">Supernatural & Hybrid Forms</h2>
+                        <p class="mb-6 text-gray-300">This category includes zombies created by forces that bend or break the laws of biology, often involving bio-engineered viruses or pathogens with impossibly rapid effects. These creatures blur the line between science fiction and fantasy.</p>
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div class="bg-gray-800 p-6 rounded-lg border border-gray-700 flex flex-col">
+                                <img src="https://i.ytimg.com/vi/yPwGBf4u838/maxresdefault.jpg">
+                                <h3 class="font-semibold text-xl text-white mb-2">Resident Evil (T-Virus / Las Plagas)</h3>
+                                <p class="mb-4 flex-grow">Virus engineered → mutates hosts in varied ways. Some zombies are slow, others hyper-strong or with monstrous growths.</p>
+                                <div class="bg-gray-900 p-3 rounded-md mt-auto">
+                                    <p class="font-semibold text-red-400">Physiology Angle:</p>
+                                    <p class="text-gray-300">rapid mutation, viral plasticity, weaponized biology.</p>
+                                </div>
+                            </div>
+                            <div class="bg-gray-800 p-6 rounded-lg border border-gray-700 flex flex-col">
+                                <img src="https://static.wikia.nocookie.net/worldwarzgame/images/2/21/Wwz-zombie.png/revision/latest?cb=20200314115000">
+                                <h3 class="font-semibold text-xl text-white mb-2">World War Z (film version)</h3>
+                                <p class="mb-4 flex-grow">Infection spreads in seconds via bites. Zombies are fast, swarm-like, and biologically “simple” (ignore terminally ill hosts).</p>
+                                <div class="bg-gray-900 p-3 rounded-md mt-auto">
+                                    <p class="font-semibold text-red-400">Physiology Angle:</p>
+                                    <p class="text-gray-300">rapid mutation, viral plasticity, weaponized biology.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 2: The Last of Us -->
+            <section id="lastofus" class="content-section">
+                 <h2 class="text-3xl font-bold text-white mb-2 text-center">Case Study: The Cordyceps Brain Infection</h2>
+                 <p class="mt-2 max-w-3xl mx-auto text-gray-400 text-center mb-8">The infection in *The Last of Us* is caused by a mutated strain of the Cordyceps fungus. Unlike a virus, it slowly consumes its host from within, leading to distinct stages of transformation as the fungus grows and repurposes the human body.</p>
+                 <div class="max-w-4xl mx-auto space-y-4">
+                     <!-- Accordion Item: Runner -->
+                     <div class="bg-gray-800 rounded-lg border border-gray-700 overflow-hidden">
+                         <div class="accordion-header flex justify-between items-center p-4">
+                             <h3 class="text-xl font-semibold text-white">Stage 1: Runners</h3>
+                             <svg class="w-6 h-6 text-red-400 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                         </div>
+                         <div class="accordion-content px-4 text-gray-300">
+                             <div class="accordion-body">
+                                <img src="https://im.contentlounge.net/styles/manual_crop/s3/2023-10/Screenshot%20%28122%29.png?im=AspectCrop%2Csize%3D%2816%2C9%29%2Cgravity%3DCenter%2CallowExpansion%2CBackgroundColor%2Ccolor%3Dtransparent&hash=f104c73c5c76bb55a1e752b7919793d20733558eba2c05019d75e62262a64daa" alt="A Runner from The Last of Us" class="accordion-image" onerror="this.onerror=null;this.src='https://placehold.co/400x400/1f2937/ef4444?text=Image';">
+                                <div>
+                                     <p class="mb-4">Newly infected, only days in. Fast, aggressive, still vaguely human in movement and appearance. Partial awareness may linger.</p>
+                                     <div class="bg-gray-900 p-3 rounded-md">
+                                         <p class="font-semibold text-red-400">Physiology Hook:</p>
+                                         <p>Adrenal system in constant overdrive, virus/fungus hijacks motor cortex for explosive movement.</p>
+                                     </div>
+                                </div>
+                             </div>
+                         </div>
+                     </div>
+                     <!-- Accordion Item: Stalker -->
+                     <div class="bg-gray-800 rounded-lg border border-gray-700 overflow-hidden">
+                         <div class="accordion-header flex justify-between items-center p-4">
+                             <h3 class="text-xl font-semibold text-white">Stage 2: Stalkers</h3>
+                             <svg class="w-6 h-6 text-red-400 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                         </div>
+                         <div class="accordion-content px-4 text-gray-300">
+                            <div class="accordion-body">
+                                <img src="https://static0.gamerantimages.com/wordpress/wp-content/uploads/2022/10/image-22.jpg?w=1600&h=900&fit=crop">
+                                <div>
+                                     <p class="mb-4">Intermediate stage, a few weeks to months. Distorted faces with early fungal growth. Known for lurking in dark spaces, ambushing prey.</p>
+                                     <div class="bg-gray-900 p-3 rounded-md">
+                                         <p class="font-semibold text-red-400">Physiology Hook:</p>
+                                         <p>Possible alteration of amygdala and midbrain threat circuits → predator-like stealth and fear suppression.</p>
+                                     </div>
+                                </div>
+                             </div>
+                         </div>
+                     </div>
+                     <!-- Accordion Item: Clicker -->
+                     <div class="bg-gray-800 rounded-lg border border-gray-700 overflow-hidden">
+                         <div class="accordion-header flex justify-between items-center p-4">
+                             <h3 class="text-xl font-semibold text-white">Stage 3: Clickers</h3>
+                              <svg class="w-6 h-6 text-red-400 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                         </div>
+                         <div class="accordion-content px-4 text-gray-300">
+                            <div class="accordion-body">
+                                <img src="https://sm.ign.com/ign_me/gallery/t/the-last-o/the-last-of-us-part-ii-clicker-statue-photo-gallery_eteu.jpg">
+                                <div>
+                                     <p class="mb-4">Infected for years; faces fully consumed by fungus. Blind, but use echolocation (sharp clicking noises). Heavily armored by fungal plating, making them harder to kill.</p>
+                                     <div class="bg-gray-900 p-3 rounded-md">
+                                         <p class="font-semibold text-red-400">Physiology Hook:</p>
+                                         <p>Visual cortex overridden; auditory cortex repurposed for sonar mapping; fungal chitin acts as protective exoskeleton.</p>
+                                     </div>
+                                </div>
+                             </div>
+                         </div>
+                     </div>
+                     <!-- Accordion Item: Bloater -->
+                     <div class="bg-gray-800 rounded-lg border border-gray-700 overflow-hidden">
+                         <div class="accordion-header flex justify-between items-center p-4">
+                             <h3 class="text-xl font-semibold text-white">Stage 4: Bloaters</h3>
+                              <svg class="w-6 h-6 text-red-400 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                         </div>
+                         <div class="accordion-content px-4 text-gray-300">
+                            <div class="accordion-body">
+                                <img src="https://preview.redd.it/wouldnt-bloaters-be-a-big-problem-further-down-the-line-v0-q74cbh6y9vqe1.jpeg?width=1080&crop=smart&auto=webp&s=ed25ce6a5202f5a6ef8a0ccd4195757f293c2438" alt="A Bloater from The Last of Us" class="accordion-image" onerror="this.onerror=null;this.src='https://placehold.co/400x400/1f2937/ef4444?text=Image';">
+                                <div>
+                                     <p class="mb-4">Longest-infected stage, extreme fungal growth overtakes the body. Slow but powerful; capable of ripping fungus growths off and throwing them as spore bombs. Skin is thick with fungal armor, making them tank-like.</p>
+                                     <div class="bg-gray-900 p-3 rounded-md">
+                                         <p class="font-semibold text-red-400">Physiology Hook:</p>
+                                         <p>Fungal symbiosis with immune system; skin replaced with hardened fungal plates; altered respiratory function to weaponize spores.</p>
+                                     </div>
+                                </div>
+                             </div>
+                         </div>
+                     </div>
+                      <!-- Accordion Item: Rat King -->
+                     <div class="bg-gray-800 rounded-lg border border-gray-700 overflow-hidden">
+                         <div class="accordion-header flex justify-between items-center p-4">
+                             <h3 class="text-xl font-semibold text-white">Anomaly: The Rat King</h3>
+                              <svg class="w-6 h-6 text-red-400 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                         </div>
+                         <div class="accordion-content px-4 text-gray-300">
+                            <div class="accordion-body">
+                                <img src="https://static0.thegamerimages.com/wordpress/wp-content/uploads/2022/10/tlou-2-rat-king.jpg">
+                                <div>
+                                     <p class="mb-4">Rare, catastrophic mutant. Several infected bodies fused together after decades in the same confined space. Functions as a hive mind, combining mass, strength, and speed. Pieces of it can split off mid-fight, becoming independent infected.</p>
+                                     <div class="bg-gray-900 p-3 rounded-md">
+                                         <p class="font-semibold text-red-400">Physiology Hook:</p>
+                                         <p>Extreme mycelial overgrowth linking several nervous systems; distributed neural network functions as a single consciousness.</p>
+                                     </div>
+                                </div>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+            </section>
+
+            <!-- Section 3: Dying Light -->
+            <section id="dyinglight" class="content-section">
+                <h2 class="text-3xl font-bold text-white mb-2 text-center">Case Study: The Harran Virus & Its Mutants</h2>
+                <p class="mt-2 max-w-3xl mx-auto text-gray-400 text-center mb-8">The Harran Virus (THV) is a rabies-like pathogen that transforms its victims into aggressive, photosensitive creatures. The infection is dynamic, producing a wide variety of specialized mutants and establishing a clear hierarchy of predators, especially after nightfall.</p>
+                
+                <h3 class="text-2xl font-bold text-red-500 mb-4 border-l-4 border-red-500 pl-4">Infected Variants</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+                    <!-- Variant Cards -->
+                    <div class="bg-gray-800 p-5 rounded-lg border border-gray-700 flex flex-col">
+                        <img src="https://pilgrimoutpost.techlandgg.com/img/news/135/viral-rush-1382x650.jpg" alt="A Viral from Dying Light" class="card-image" onerror="this.onerror=null;this.src='https://placehold.co/600x400/1f2937/ef4444?text=Image';">
+                        <h4 class="font-bold text-lg text-white">Virals</h4>
+                        <p class="text-sm text-gray-300 mt-1 flex-grow">Recently infected, fast, aggressive, still humanlike in appearance and behavior (sometimes even beg for help before attacking).</p>
+                        <p class="text-xs text-red-400 mt-2"><strong class="font-semibold">Physiology:</strong> Infection hijacks limbic system, causing rage outbursts; motor cortex mostly intact → explains speed and agility.</p>
+                    </div>
+                    <div class="bg-gray-800 p-5 rounded-lg border border-gray-700 flex flex-col">
+                        <img src="https://oyster.ignimgs.com/mediawiki/apis.ign.com/dying-light-2/8/83/Dying_Light_2_Biter_Grab.jpg?width=1280" alt="A Biter from Dying Light" class="card-image" onerror="this.onerror=null;this.src='https://placehold.co/600x400/1f2937/ef4444?text=Image';">
+                        <h4 class="font-bold text-lg text-white">Biters</h4>
+                        <p class="text-sm text-gray-300 mt-1 flex-grow">Classic shamblers; slow, decayed, and numerous.</p>
+                        <p class="text-xs text-red-400 mt-2"><strong class="font-semibold">Physiology:</strong> Brain stem-driven locomotion only; higher brain centers destroyed; necrosis limits speed but not basic movement.</p>
+                    </div>
+                    <div class="bg-gray-800 p-5 rounded-lg border border-gray-700 flex flex-col">
+                        <img src="https://static.wikia.nocookie.net/dyinglight/images/8/83/Volatile_dying_light.png/revision/latest/scale-to-width/360?cb=20240902141011" alt="A Volatile from Dying Light" class="card-image" onerror="this.onerror=null;this.src='https://placehold.co/600x400/1f2937/ef4444?text=Image';">
+                        <h4 class="font-bold text-lg text-white">Night Walkers / Volatiles</h4>
+                        <p class="text-sm text-gray-300 mt-1 flex-grow">Apex predators at night; hyper-fast, strong, and deadly; burn instantly in UV/sunlight.</p>
+                        <p class="text-xs text-red-400 mt-2"><strong class="font-semibold">Physiology:</strong> Virus creates photosensitivity (perhaps fungal-like vulnerability to UV); adrenal system in permanent hyperdrive; muscle tissue altered for explosive strength.</p>
+                    </div>
+                    <div class="bg-gray-800 p-5 rounded-lg border border-gray-700 flex flex-col">
+                        <img src="https://static.wikia.nocookie.net/dyinglight/images/4/4b/Monster_Howler.png/revision/latest?cb=20210701213055" alt="A Howler from Dying Light" class="card-image" onerror="this.onerror=null;this.src='https://placehold.co/600x400/1f2937/ef4444?text=Image';">
+                        <h4 class="font-bold text-lg text-white">Howlers</h4>
+                        <p class="text-sm text-gray-300 mt-1 flex-grow">Emit a scream that attracts hordes instead of fighting directly.</p>
+                        <p class="text-xs text-red-400 mt-2"><strong class="font-semibold">Physiology:</strong> Larynx and respiratory system adapted for high-decibel calls; social/pack behavior circuitry rewired by virus.</p>
+                    </div>
+                    <div class="bg-gray-800 p-5 rounded-lg border border-gray-700 flex flex-col">
+                        <img src="https://i.redd.it/here-are-some-of-my-favorite-spitter-pics-in-the-second-v0-hnqcdz6izia91.jpg?width=1920&format=pjpg&auto=webp&s=13bc442fb92fb4b6eddc2071387abcfb016884fb" alt="A Spitter from Dying Light" class="card-image" onerror="this.onerror=null;this.src='https://placehold.co/600x400/1f2937/ef4444?text=Image';">
+                        <h4 class="font-bold text-lg text-white">Spitters</h4>
+                        <p class="text-sm text-gray-300 mt-1 flex-grow">Projectile attackers that spit toxic bile/acid.</p>
+                        <p class="text-xs text-red-400 mt-2"><strong class="font-semibold">Physiology:</strong> Digestive tract and salivary glands mutated to secrete corrosive compounds; projectile vomiting as a weaponized defense.</p>
+                    </div>
+                    <div class="bg-gray-800 p-5 rounded-lg border border-gray-700 flex flex-col">
+                        <img src="https://oyster.ignimgs.com/mediawiki/apis.ign.com/dying-light-2/d/d3/Dying_Light_2_Rabid_Goon.jpg?width=1280" alt="A Goon from Dying Light" class="card-image" onerror="this.onerror=null;this.src='https://placehold.co/600x400/1f2937/ef4444?text=Image';">
+                        <h4 class="font-bold text-lg text-white">Goons</h4>
+                        <p class="text-sm text-gray-300 mt-1 flex-grow">Large, hulking zombies with extreme strength but slow movement.</p>
+                        <p class="text-xs text-red-400 mt-2"><strong class="font-semibold">Physiology:</strong> Viral mutation over-stimulates muscle growth and density; reduced neural complexity → pure strength, little coordination.</p>
+                    </div>
+                    <div class="bg-gray-800 p-5 rounded-lg border border-gray-700 flex flex-col">
+                        <img src="https://i.redd.it/wlwgzup9waab1.jpg" alt="A Demolisher from Dying Light" class="card-image" onerror="this.onerror=null;this.src='https://placehold.co/600x400/1f2937/ef4444?text=Image';">
+                        <h4 class="font-bold text-lg text-white">Demolishers</h4>
+                        <p class="text-sm text-gray-300 mt-1 flex-grow">Massive armored brutes that can throw debris and smash obstacles.</p>
+                        <p class="text-xs text-red-400 mt-2"><strong class="font-semibold">Physiology:</strong> Similar to Goons but with hardened exoskeletal growths; virus integrates with skeletal system to produce bony armor plates.</p>
+                    </div>
+                     <div class="bg-gray-800 p-5 rounded-lg border border-gray-700 flex flex-col">
+                        <img src="https://preview.redd.it/ur8340phdr081.jpg?width=640&crop=smart&auto=webp&s=ae1ec970d4b340cdfc8729a3be158d9ff5c70993" alt="A Bomber from Dying Light" class="card-image" onerror="this.onerror=null;this.src='https://placehold.co/600x400/1f2937/ef4444?text=Image';">
+                        <h4 class="font-bold text-lg text-white">Bombers</h4>
+                        <p class="text-sm text-gray-300 mt-1 flex-grow">Bloated zombies that explode when approached, spraying infected material.</p>
+                        <p class="text-xs text-red-400 mt-2"><strong class="font-semibold">Physiology:</strong> Gas buildup in digestive system combined with weak dermal layers; essentially a living spore bomb.</p>
+                    </div>
+                     <div class="bg-gray-800 p-5 rounded-lg border border-gray-700 flex flex-col">
+                        <img src="https://i.ytimg.com/vi/irHJlrtLDAM/maxresdefault.jpg" alt="A Volatile Tyrant from Dying Light" class="card-image" onerror="this.onerror=null;this.src='https://placehold.co/600x400/1f2937/ef4444?text=Image';">
+                        <h4 class="font-bold text-lg text-white">Volatile Tyrants / Unique Mutants</h4>
+                        <p class="text-sm text-gray-300 mt-1 flex-grow">Highly evolved, boss-tier infected combining speed, strength, and intelligence.</p>
+                        <p class="text-xs text-red-400 mt-2"><strong class="font-semibold">Physiology:</strong> Suggests advanced viral rewiring of prefrontal cortex for coordination, combined with muscle/bone overgrowth.</p>
+                    </div>
+                </div>
+
+                <h3 class="text-2xl font-bold text-red-500 mb-4 border-l-4 border-red-500 pl-4">Analysis: Photosensitivity and UV Vulnerability</h3>
+                <p class="mb-6 text-gray-300">A defining characteristic of the Harran Virus is the infected's vulnerability to ultraviolet light, which intensifies as the infection progresses.</p>
+                <div class="space-y-4">
+                     <div class="bg-gray-800 p-5 rounded-lg border border-gray-700">
+                        <h4 class="font-bold text-lg text-white">Early-Stage Infected (Virals, Biters)</h4>
+                        <p class="text-gray-300 mt-1">Vulnerable to intense UV exposure (e.g., UV lamps, traps). Can still tolerate daylight, though slowed and weakened compared to night. Virus alters skin and tissue to make them partially UV-sensitive, like fungi or certain pathogens. At this stage, the host’s cells still provide some protection.</p>
+                    </div>
+                    <div class="bg-gray-800 p-5 rounded-lg border border-gray-700">
+                        <h4 class="font-bold text-lg text-white">Mid-Stage Mutants (Howlers, Spitters, Bombers, Goons, Demolishers)</h4>
+                        <p class="text-gray-300 mt-1">Still active in daylight but show stronger vulnerability to concentrated UV (weapons, traps). Larger mutations sometimes include thicker fungal/bony plates, which give them partial shielding. Growing viral load pushes host toward fungal-like traits, increasing light sensitivity. Armor growth may be compensatory.</p>
+                    </div>
+                    <div class="bg-gray-800 p-5 rounded-lg border border-gray-700">
+                        <h4 class="font-bold text-lg text-white">Late-Stage / Apex Infected (Volatiles, Night Hunters)</h4>
+                        <p class="text-gray-300 mt-1">Cannot survive direct sunlight at all — burn or disintegrate when exposed. Fully nocturnal predators with overwhelming strength and agility. By this stage, the virus has fully replaced protective human tissue with fungal analogues, leaving them completely UV-intolerant. They’re like walking colonies of fungus — thriving in dark, humid conditions, destroyed by light.</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabs = document.querySelectorAll('.tab-btn');
+            const contentSections = document.querySelectorAll('.content-section');
+            const accordions = document.querySelectorAll('.accordion-header');
+
+            // Tab navigation
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    tabs.forEach(t => t.classList.remove('active'));
+                    tab.classList.add('active');
+
+                    const targetTab = tab.getAttribute('data-tab');
+                    contentSections.forEach(section => {
+                        if (section.id === targetTab) {
+                            section.classList.add('active');
+                        } else {
+                            section.classList.remove('active');
+                        }
+                    });
+                });
+            });
+
+            // Accordion functionality for "The Last of Us" section
+            accordions.forEach(accordion => {
+                accordion.addEventListener('click', () => {
+                    const content = accordion.nextElementSibling;
+                    const icon = accordion.querySelector('svg');
+                    const isOpen = content.classList.contains('open');
+
+                    // Close all accordions first
+                    accordions.forEach(otherAccordion => {
+                        if (otherAccordion !== accordion) {
+                            otherAccordion.nextElementSibling.classList.remove('open');
+                            otherAccordion.querySelector('svg').style.transform = 'rotate(0deg)';
+                        }
+                    });
+
+                    // Then, toggle the clicked one
+                    if (!isOpen) {
+                        content.classList.add('open');
+                        icon.style.transform = 'rotate(180deg)';
+                    } else {
+                        content.classList.remove('open');
+                        icon.style.transform = 'rotate(0deg)';
+                    }
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
+
+
